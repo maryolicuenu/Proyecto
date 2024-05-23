@@ -245,6 +245,7 @@ public class Pasantias extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Pasantias().setVisible(true);
+                
             }
         });
     }
