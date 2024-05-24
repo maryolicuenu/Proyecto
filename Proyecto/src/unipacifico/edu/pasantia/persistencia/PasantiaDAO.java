@@ -11,14 +11,14 @@ import java.util.ArrayList;
 import unipacifico.edu.pasantia.logica.Pasantia;
 
 
-public class PasantiaDAO {
+
 
 
 /**
  *
  * @author General
  */
-public class TuristaDAO {
+public class PasantiaDAO {
     
     public void guardar(ArrayList<Pasantia>listaPasantia)throws IOException{
         File archivo = new File("pasantia.pas") ;
@@ -43,4 +43,4 @@ public class TuristaDAO {
 }
 
     
-}
+
