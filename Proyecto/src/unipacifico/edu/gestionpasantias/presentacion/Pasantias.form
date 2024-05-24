@@ -71,7 +71,7 @@
                                   </Group>
                                   <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="jTextField1" min="-2" pref="133" max="-2" attributes="0"/>
+                                      <Component id="campoCodigoP" min="-2" pref="133" max="-2" attributes="0"/>
                                       <Component id="jTextField2" min="-2" pref="133" max="-2" attributes="0"/>
                                       <Component id="jTextField3" min="-2" pref="133" max="-2" attributes="0"/>
                                   </Group>
@@ -126,7 +126,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="campoCodigoP" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jTextField8" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -175,7 +175,7 @@
             <Property name="text" type="java.lang.String" value="Codigo"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField1">
+        <Component class="javax.swing.JTextField" name="campoCodigoP">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>

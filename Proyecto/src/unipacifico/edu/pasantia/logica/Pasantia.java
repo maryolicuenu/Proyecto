@@ -13,19 +13,19 @@ public class Pasantia {
     private boolean inactivo;
     private boolean nuevoEstado;
     
-public Pasantia (String nombrep) {
-    this.nombreP = nombrep;
+public Pasantia (String nombreP) {
+    this.nombreP = nombreP;
     }    
     
-    public Pasantia (String codigop, String nombrep) {
-        this.codigoP = codigop;
-        this.nombreP = nombrep;        
+    public Pasantia (String codigoP, String nombreP) {
+        this.codigoP = codigoP;
+        this.nombreP = nombreP;        
     }
-    public void setCodigop(String nuevoCodigop) {
-        this.codigoP = nuevoCodigop;
+    public void setCodigoP(String nuevoCodigoP) {
+        this.codigoP = nuevoCodigoP;
     }
-    public void setNombrep (String nuevoNombrep) {
-        this.nombreP = nuevoNombrep;
+    public void setNombreP (String nuevoNombreP) {
+        this.nombreP = nuevoNombreP;
     }
     
    public void setFechainicio(String nuevaFechainicio) {
