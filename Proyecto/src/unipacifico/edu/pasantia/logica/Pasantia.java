@@ -6,40 +6,44 @@ import java.io.Serializable;
 
 public class Pasantia implements Serializable{
     
-    private String codigoP;
-    private String nombreP;
+    private String codigo;
+    private String nombre;
     private String fechainicio;
-    private String fechaFinalizaion;
+    private String fechafinalizaion;
     private String descripcion;
-    private boolean activo;
-    private boolean inactivo;
+    private String numeroPasantes;
+    private String numeroConvenioMacro;
     private boolean estado;
 
-    public Pasantia(String codigoP, String nombreP, String fechainicio, String fechaFinalizaion, String descripcion, boolean activo, boolean inactivo, boolean estado) {
-        this.codigoP = codigoP;
-        this.nombreP = nombreP;
+   
+
+    public Pasantia(String codigoP, String nombreP, String fechainicio, String fechafinalizaion, String descripcion, String numeroPasantes, String numeroConvenioMacro, String numeroConvenioMacro1) {
+        this.codigo = codigoP;
+        this.nombre = nombreP;
         this.fechainicio = fechainicio;
-        this.fechaFinalizaion = fechaFinalizaion;
+        this.fechafinalizaion = fechafinalizaion;
         this.descripcion = descripcion;
-        this.activo = activo;
-        this.inactivo = inactivo;
-        this.estado = estado;
+        this.numeroPasantes = numeroPasantes;
+        this.numeroConvenioMacro = numeroConvenioMacro;
     }
 
+   
+
+   
     public String getCodigoP() {
-        return codigoP;
+        return codigo;
     }
 
     public void setCodigoP(String codigoP) {
-        this.codigoP = codigoP;
+        this.codigo = codigoP;
     }
 
     public String getNombreP() {
-        return nombreP;
+        return nombre;
     }
 
     public void setNombreP(String nombreP) {
-        this.nombreP = nombreP;
+        this.nombre = nombreP;
     }
 
     public String getFechainicio() {
@@ -50,12 +54,12 @@ public class Pasantia implements Serializable{
         this.fechainicio = fechainicio;
     }
 
-    public String getFechaFinalizaion() {
-        return fechaFinalizaion;
+    public String getFechafinalizaion() {
+        return fechafinalizaion;
     }
 
-    public void setFechaFinalizaion(String fechaFinalizaion) {
-        this.fechaFinalizaion = fechaFinalizaion;
+    public void setFechafinalizaion(String fechafinalizaion) {
+        this.fechafinalizaion = fechafinalizaion;
     }
 
     public String getDescripcion() {
@@ -66,23 +70,23 @@ public class Pasantia implements Serializable{
         this.descripcion = descripcion;
     }
 
-    public boolean getActivo() {
-        return activo;
+    public String getNumeroPasantes() {
+        return numeroPasantes;
     }
 
-    public void setActivo(boolean activo) {
-        this.activo = activo;
+    public void setNumeroPasantes(String numeroPasantes) {
+        this.numeroPasantes = numeroPasantes;
     }
 
-    public boolean getInactivo() {
-        return inactivo;
+    public String getNumeroConvenioMacro() {
+        return numeroConvenioMacro;
     }
 
-    public void setInactivo(boolean inactivo) {
-        this.inactivo = inactivo;
+    public void setNumeroConvenioMacro(String numeroConvenioMacro) {
+        this.numeroConvenioMacro = numeroConvenioMacro;
     }
 
-    public boolean getEstado() {
+    public boolean isEstado() {
         return estado;
     }
 
@@ -90,5 +94,5 @@ public class Pasantia implements Serializable{
         this.estado = estado;
     }
 
-
-    }
+   
+}

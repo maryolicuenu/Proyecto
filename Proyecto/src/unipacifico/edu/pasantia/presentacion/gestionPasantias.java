@@ -1,5 +1,5 @@
 
-package unipacifico.edu.gestionpasantias.presentacion;
+package unipacifico.edu.pasantia.presentacion;
 
 
 import java.io.IOException;
@@ -10,19 +10,18 @@ import java.util.logging.Logger;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
-import unipacifico.edu.gestionpasantias.presentacion.Pasantias;
 import unipacifico.edu.pasantia.persistencia.PasantiaDAO;
 import unipacifico.edu.pasantia.logica.Pasantia;
 
-public class Pasantias extends javax.swing.JFrame {
+public class gestionPasantias extends javax.swing.JFrame {
 
     
 
     
-    public Pasantias() {
+    public gestionPasantias() {
         initComponents();
         listaPasantia = new ArrayList<Pasantia>();
-        cargarPasantia();
+        guardarPasantia();
         pintarTabla();
         tablaPasantia.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
@@ -53,14 +52,14 @@ public class Pasantias extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         campoFechafinalizacion = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        campoActivo = new javax.swing.JTextField();
+        campoNumeroPasantes = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        campoInactivo = new javax.swing.JTextField();
+        campoNumeroConvenioMacro = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         campoDescripcion = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         campoEstado = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        botonRegistroPasantia = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -82,11 +81,29 @@ public class Pasantias extends javax.swing.JFrame {
 
         jLabel3.setText("Nombre Empresa");
 
+        campoNombreP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoNombrePActionPerformed(evt);
+            }
+        });
+
         jLabel4.setText("Fecha Inicio");
 
         jLabel5.setText("Feha Finalizacion");
 
+        campoFechafinalizacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoFechafinalizacionActionPerformed(evt);
+            }
+        });
+
         jLabel6.setText("Numero Pasantes");
+
+        campoNumeroPasantes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoNumeroPasantesActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("Descripcion");
 
@@ -94,10 +111,16 @@ public class Pasantias extends javax.swing.JFrame {
 
         jLabel9.setText("Estado");
 
-        jButton1.setText("Registrar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        campoEstado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                campoEstadoActionPerformed(evt);
+            }
+        });
+
+        botonRegistroPasantia.setText("Registrar");
+        botonRegistroPasantia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonRegistroPasantiaActionPerformed(evt);
             }
         });
 
@@ -129,7 +152,7 @@ public class Pasantias extends javax.swing.JFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(111, 111, 111)
-                        .addComponent(jButton1)
+                        .addComponent(botonRegistroPasantia)
                         .addGap(80, 80, 80)
                         .addComponent(jButton2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -158,7 +181,7 @@ public class Pasantias extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel7)
                                 .addGap(49, 49, 49)
-                                .addComponent(campoInactivo, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(campoNumeroConvenioMacro, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -170,7 +193,7 @@ public class Pasantias extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jButton3)
-                                            .addComponent(campoActivo, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                            .addComponent(campoNumeroPasantes, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addGap(1, 1, 1))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
@@ -193,7 +216,7 @@ public class Pasantias extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(campoNombreP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campoInactivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoNumeroConvenioMacro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -205,10 +228,10 @@ public class Pasantias extends javax.swing.JFrame {
                     .addComponent(jLabel8)
                     .addComponent(campoDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(campoActivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoNumeroPasantes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(botonRegistroPasantia)
                     .addComponent(jButton2)
                     .addComponent(jButton3))
                 .addGap(28, 28, 28)
@@ -230,58 +253,59 @@ public class Pasantias extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void campoCodigoPActionPerfomed(java.awt.event.ActionEvent evt){
-         }
-    private void campoNombrePActionPerfomed(java.awt.event.ActionEvent evt) {
-         }
-    private void campoFechainicioActionPerfomed(java.awt.event.ActionEvent evt) {
-         }
-    private void campoFechafinalizacionActionPerfomed(java.awt.event.ActionEvent evt) {
-         }
-    private void campoDescripcionActionPerfomed(java.awt.event.ActionEvent evt) {
-         }
-    private void campoActivoPActionPerfomed(java.awt.event.ActionEvent evt) {
-         }
-    private void campoInactivoActionPerfomed(java.awt.event.ActionEvent evt) {
-         }
-    private void campoNuevoEstadoActionPerfomed(java.awt.event.ActionEvent evt) {
-         }
     
     
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void botonRegistroPasantiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistroPasantiaActionPerformed
      String codigoP = campoCodigoP.getText(); 
      String nombreP = campoNombreP.getText();
      String fechainicio = campoFechainicio.getText();
-     String fechaFinalizacion = campoFechafinalizacion.getText();
+     String fechafinalizacion = campoFechafinalizacion.getText();
      String descripcion = campoDescripcion.getText();
-     String activo = campoActivo.getText();
-     String inactivo = campoInactivo.getText();
      String estado = campoEstado.getText();
+     String numeroPasantes= campoNumeroPasantes.getText();
+     String numeroConvenioMacro= campoNumeroConvenioMacro.getText();
      
-     Pasantia pas = new Pasantia(codigoP, nombreP, fechainicio, fechaFinalizacion, descripcion, activo, inactivo, estado);
+     Pasantia pas = new Pasantia(codigoP, nombreP, fechainicio, fechafinalizacion, descripcion, estado, numeroPasantes, numeroConvenioMacro);
      listaPasantia.add(pas);
      try{
        PasantiaDAO dao = new PasantiaDAO();
        dao.guardar(listaPasantia);
-
+     
        catch(IOExcepcion error){
            JOptionPane.showMessageDialog(null,"no se pudo almacenar pasante");
                }
        pintarTabla();
-     }  
+     }  catch (IOException ex) {  
+            Logger.getLogger(gestionPasantias.class.getName()).log(Level.SEVERE, null, ex);
+        }  
             
         
-     
+
             
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_botonRegistroPasantiaActionPerformed
 
     private void campoCodigoPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoCodigoPActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_campoCodigoPActionPerformed
+
+    private void campoNombrePActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNombrePActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoNombrePActionPerformed
+
+    private void campoFechafinalizacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoFechafinalizacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoFechafinalizacionActionPerformed
+
+    private void campoNumeroPasantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNumeroPasantesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoNumeroPasantesActionPerformed
+
+    private void campoEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoEstadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoEstadoActionPerformed
     {
     }
-
- public void cargarTuristas(){
+     public void guardarPasantia(){
      try{
          PasantiaDAO dao = new PasantiaDAO();
          listaPasantia = dao.leer();
@@ -289,10 +313,13 @@ public class Pasantias extends javax.swing.JFrame {
       catch(IOException error){ error.printStackTrace();}
       catch(ClassNotFoundException errorTipo){errorTipo.printStackTrace();}
     }
+     
+     
+     
       public void pintarTabla(){
       String tabla []=new String[]{"CodigoP", "NombreP", "Descripcion", "Fechainicio","Fechafinalizacion"};
       int filas = listaPasantia.size();
-      String[][]valores= new String[filas][5];
+      String[][]valores= new String[filas][7];
       int contador =0; 
      for (Pasantia Pasante: listaPasantia){
          valores[contador][0]=Pasante.getCodigoP();
@@ -300,34 +327,31 @@ public class Pasantias extends javax.swing.JFrame {
          valores[contador][2]=Pasante.getDescripcion();
          valores[contador][3]=Pasante.getFechainicio();
          valores[contador][4]=Pasante.getFechaFinalizaion();
+          valores[contador][5]=Pasante.getNumeroPasantes();
+         valores[contador][6]=Pasante.getNumeroConvenioMacro();
         contador++; 
      }
      
           DefaultTableModel modeloTabla= new DefaultTableModel(valores,tabla);
         
         tablaPasantia.setModel(modeloTabla);
-      
-    } 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Pasantias().setVisible(true);
-                
+       
             
 }
-            
+      
+    
 
         
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField campoActivo;
+    private javax.swing.JButton botonRegistroPasantia;
     private javax.swing.JTextField campoCodigoP;
     private javax.swing.JTextField campoDescripcion;
     private javax.swing.JTextField campoEstado;
     private javax.swing.JTextField campoFechafinalizacion;
     private javax.swing.JTextField campoFechainicio;
-    private javax.swing.JTextField campoInactivo;
     private javax.swing.JTextField campoNombreP;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTextField campoNumeroConvenioMacro;
+    private javax.swing.JTextField campoNumeroPasantes;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
@@ -344,6 +368,9 @@ public class Pasantias extends javax.swing.JFrame {
     private javax.swing.JTable tablaPasantia;
     // End of variables declaration//GEN-END:variables
     private ArrayList<Pasantia> listaPasantia;
-    private Pasantia pasantiaSeleccionado;
+    private Pasantia pasanteSeleccionado;
     private int filaSeleccionada= -1;
-}
+
+    private Pasantia Pasasantia(String codigoP, String nombreP, String descripcion, String fechainicio, String fechafinalizacion) {
+        
+    
