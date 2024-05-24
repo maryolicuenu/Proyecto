@@ -53,7 +53,7 @@
                           <EmptySpace min="-2" pref="111" max="-2" attributes="0"/>
                           <Component id="botonRegistroPasantia" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
-                          <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                          <Component id="botonModificar" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
@@ -71,8 +71,8 @@
                                   </Group>
                                   <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="campoCodigoP" min="-2" pref="133" max="-2" attributes="0"/>
-                                      <Component id="campoNombreP" min="-2" pref="133" max="-2" attributes="0"/>
+                                      <Component id="campoCodigo" min="-2" pref="133" max="-2" attributes="0"/>
+                                      <Component id="campoNombreEmpresa" min="-2" pref="133" max="-2" attributes="0"/>
                                       <Component id="campoFechainicio" min="-2" pref="133" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -100,7 +100,7 @@
                                           <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="botonInactivar" min="-2" max="-2" attributes="0"/>
                                               <Component id="campoNumeroPasantes" min="-2" pref="141" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
@@ -126,14 +126,14 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="campoCodigoP" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="campoCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="campoEstado" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="campoNombreP" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="campoNombreEmpresa" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel7" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
                       <Component id="campoNumeroConvenioMacro" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -154,8 +154,8 @@
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="botonRegistroPasantia" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="botonModificar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="botonInactivar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="164" max="-2" attributes="0"/>
@@ -175,9 +175,9 @@
             <Property name="text" type="java.lang.String" value="Codigo"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="campoCodigoP">
+        <Component class="javax.swing.JTextField" name="campoCodigo">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoCodigoPActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoCodigoActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
@@ -185,9 +185,9 @@
             <Property name="text" type="java.lang.String" value="Nombre Empresa"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="campoNombreP">
+        <Component class="javax.swing.JTextField" name="campoNombreEmpresa">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoNombrePActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoNombreEmpresaActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
@@ -249,12 +249,15 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonRegistroPasantiaActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton2">
+        <Component class="javax.swing.JButton" name="botonModificar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Modificar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonModificarActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton3">
+        <Component class="javax.swing.JButton" name="botonInactivar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Inactivar"/>
           </Properties>
