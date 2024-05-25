@@ -39,7 +39,7 @@ public class pasantiaGestion {
         try{
             PasantiaDAO dao = new PasantiaDAO();
             dao.guardar(listaPasantia);
-              //TuristaDAO dao = new TuristaDAO();
+             
               ArrayList <Pasantia> listado= dao.leer();
               for (Pasantia pasante: listado){
                   System.out.println(pasante.getCodigoP());

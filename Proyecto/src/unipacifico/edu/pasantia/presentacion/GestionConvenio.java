@@ -1,6 +1,15 @@
 package unipacifico.edu.pasantia.presentacion;
 
-import <any?>;
+import static Gestion.pasantiaGestion.main;
+import java.io.IOException;
+import java.util.ArrayList;
+import unipacifico.edu.pasantia.logica.Pasantia;
+import unipacifico.edu.pasantia.persistencia.GestionDAO;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
+import unipacifico.edu.pasantia.logica.Pasantia;
+import static unipacifico.edu.pasantia.presentacion.GestionConvenio.main;
 
 
 
@@ -13,6 +22,7 @@ public class GestionConvenio extends javax.swing.JFrame {
      */
     public GestionConvenio() {
         initComponents();
+        
     }
 
    
@@ -24,7 +34,7 @@ public class GestionConvenio extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         CampoFechaFinalizacion = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        CampoNumeroConvenio = new javax.swing.JTextField();
+        CampoNumConvenio = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         CampoFechaInicio = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -67,8 +77,8 @@ public class GestionConvenio extends javax.swing.JFrame {
         jLabel3.setText("Fecha Inicio");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(340, 120, 79, 15);
-        getContentPane().add(CampoNumeroConvenio);
-        CampoNumeroConvenio.setBounds(420, 120, 158, 19);
+        getContentPane().add(CampoNumConvenio);
+        CampoNumConvenio.setBounds(420, 120, 158, 19);
 
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Fecha Finalizacion");
@@ -192,31 +202,7 @@ public class GestionConvenio extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_campoCorreoActionPerformed
 
-    private void BotonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarActionPerformed
-     String numeroConvenio = CampoNumeroConvenio.getText(); 
-     String nombreEmpresa = campoNombreEmpresa.getText();
-     String fechaInicio = CampoFechaInicio.getText();
-     String fechafinalizacion = CampoFechaFinalizacion.getText();
-     String correo = campoCorreo.getText();
-     String Representante = campoRepresentante.getText();
-     
-     
-     
-                    
-    }//GEN-LAST:event_BotonRegistrarActionPerformed
-
-    private void ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ModificarActionPerformed
-
-    private void campoRepresentanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoRepresentanteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoRepresentanteActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
+      public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -230,29 +216,65 @@ public class GestionConvenio extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(gestionConvenio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GestionConvenio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(gestionConvenio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GestionConvenio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(gestionConvenio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GestionConvenio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(gestionConvenio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GestionConvenio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new gestionConvenio().setVisible(true);
+                new GestionConvenio().setVisible(true);
             }
         });
     }
+    
+    
+    private void BotonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarActionPerformed
+     String numeroConvenio = CampoNumConvenio.getText(); 
+     String nombreEmpresa = campoNombreEmpresa.getText();
+     String fechaInicio = CampoFechaInicio.getText();
+     String fechafinalizacion = CampoFechaFinalizacion.getText();
+     String correo = campoCorreo.getText();
+     String Representante = campoRepresentante.getText();
+     
+     ConvenioMacro marc = new Convenio (numConvenio, nombreEmpresa, fechaInicio, fechafinalizacion, correo, Representante);
+     listaGestion.add(marc);
+     try{
+       GestionDAO dao = new GestionDAO();
+       dao.guardar(listaGestion);
+     
+       catch(IOExcepcion error){
+           JOptionPane.showMessageDialog(null,"no se pudo almacenar el convenio");
+               }
+       pintarTabla();
+     }  catch (IOException ex) {  
+            
+        }
+     
+                    
+    }//GEN-LAST:event_BotonRegistrarActionPerformed
+
+    private void ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ModificarActionPerformed
+
+    private void campoRepresentanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoRepresentanteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoRepresentanteActionPerformed
+
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonRegistrar;
     private javax.swing.JTextField CampoFechaFinalizacion;
     private javax.swing.JTextField CampoFechaInicio;
-    private javax.swing.JTextField CampoNumeroConvenio;
+    private javax.swing.JTextField CampoNumConvenio;
     private javax.swing.JButton Inactivar;
     private javax.swing.JButton Modificar;
     private javax.swing.JTextField campoArchivoConvenio;
@@ -270,4 +292,9 @@ public class GestionConvenio extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable3;
     // End of variables declaration//GEN-END:variables
-}
+      private ArrayList<Pasantia>listaGestion;
+
+
+        }
+  
+    
