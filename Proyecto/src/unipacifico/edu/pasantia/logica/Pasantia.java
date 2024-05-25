@@ -7,7 +7,7 @@ import java.io.Serializable;
 public class Pasantia implements Serializable{
     
     private String codigo;
-    private String nombre;
+    private String nombreEmpresa;
     private String fechainicio;
     private String fechafinalizaion;
     private String descripcion;
@@ -17,14 +17,24 @@ public class Pasantia implements Serializable{
 
    
 
-    public Pasantia(String codigoP, String nombreP, String fechainicio, String fechafinalizaion, String descripcion, String numeroPasantes, String numeroConvenioMacro, String numeroConvenioMacro1) {
-        this.codigo = codigoP;
-        this.nombre = nombreP;
+    public Pasantia(String codigo, String nombreEmpresa, String fechainicio, String fechafinalizaion, String descripcion, String numeroPasantes, String numeroConvenioMacro, String numeroConvenioMacro1) {
+        this.codigo = codigo;
+        this.nombreEmpresa = nombreEmpresa;
         this.fechainicio = fechainicio;
         this.fechafinalizaion = fechafinalizaion;
         this.descripcion = descripcion;
         this.numeroPasantes = numeroPasantes;
         this.numeroConvenioMacro = numeroConvenioMacro;
+    }
+
+    
+
+    public Pasantia(String codigo, String nombreEmpresa, String descripcion, String fechaInicio, String fechaFinalizacion, String numeroPasantes, String numeroConvenioMacro) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Pasantia(String string, String camila_Andrade, String camilagmailcom, String string0) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
    
@@ -34,16 +44,16 @@ public class Pasantia implements Serializable{
         return codigo;
     }
 
-    public void setCodigoP(String codigoP) {
-        this.codigo = codigoP;
+    public void setCodigoP(String codigo) {
+        this.codigo = codigo;
     }
 
     public String getNombreP() {
-        return nombre;
+        return nombreEmpresa;
     }
 
-    public void setNombreP(String nombreP) {
-        this.nombre = nombreP;
+    public void setNombreP(String nombreEmpresa) {
+        this.nombreEmpresa = nombreEmpresa;
     }
 
     public String getFechainicio() {

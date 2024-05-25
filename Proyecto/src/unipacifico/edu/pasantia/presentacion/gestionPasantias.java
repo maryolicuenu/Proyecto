@@ -130,6 +130,11 @@ public class gestionPasantias extends javax.swing.JFrame {
         });
 
         botonInactivar.setText("Inactivar");
+        botonInactivar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonInactivarActionPerformed(evt);
+            }
+        });
 
         tablaPasantia.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -259,8 +264,8 @@ public class gestionPasantias extends javax.swing.JFrame {
     
     
     private void botonRegistroPasantiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistroPasantiaActionPerformed
-     String codigoP = campoCodigo.getText(); 
-     String nombreP = campoNombreEmpresa.getText();
+     String codigo = campoCodigo.getText(); 
+     String nombreEmpresa = campoNombreEmpresa.getText();
      String fechainicio = campoFechainicio.getText();
      String fechafinalizacion = campoFechafinalizacion.getText();
      String descripcion = campoDescripcion.getText();
@@ -313,7 +318,7 @@ public class gestionPasantias extends javax.swing.JFrame {
          String numeroPasantes = campoNumeroPasantes.getText();
          String numeroConvenioMacro = campoNumeroConvenioMacro.getText();
          
-         Pasantias pas = new Pasantias (codigo,nombreEmpresa, descripcion, fechaInicio, fechaFinalizacion, numeroPasantes, numeroConvenioMacro);
+         Pasantia pas = new Pasantia (codigo,nombreEmpresa, descripcion, fechaInicio, fechaFinalizacion, numeroPasantes, numeroConvenioMacro);
          if(filaSeleccionada !=-1){
       listaPasantia.remove(filaSeleccionada);
       listaPasantia.add(filaSeleccionada, pas);
@@ -331,6 +336,10 @@ public class gestionPasantias extends javax.swing.JFrame {
         (codigo,nombreEmpresa, descripcion, fechaInicio, fechaFinalizacion, numeroPasantes, numeroConvenioMacro);
        pintarTabla();
     }//GEN-LAST:event_botonModificarActionPerformed
+
+    private void botonInactivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonInactivarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonInactivarActionPerformed
     {
     }
      public void guardarPasantia(){
@@ -350,11 +359,11 @@ public class gestionPasantias extends javax.swing.JFrame {
       String[][]valores= new String[filas][7];
       int contador =0; 
      for (Pasantia Pasante: listaPasantia){
-         valores[contador][0]=Pasante.getCodigoP();
-         valores[contador][1]=Pasante.getNombreP();
+         valores[contador][0]=Pasante.getCodigo();
+         valores[contador][1]=Pasante.getNombreEmpresa();
          valores[contador][2]=Pasante.getDescripcion();
          valores[contador][3]=Pasante.getFechainicio();
-         valores[contador][4]=Pasante.getFechaFinalizaion();
+         valores[contador][4]=Pasante.getFechafinalizaion();
           valores[contador][5]=Pasante.getNumeroPasantes();
          valores[contador][6]=Pasante.getNumeroConvenioMacro();
         contador++; 
@@ -378,7 +387,7 @@ public class gestionPasantias extends javax.swing.JFrame {
                         String descripcion = (String)tablaPasantia.getValueAt(selectedRow, 2);
                         String fechainicio = (String)tablaPasantia.getValueAt(selectedRow, 3);
                         String fechafinalizacion = (String)tablaPasantia.getValueAt(selectedRow, 4);
- pasanteSeleccionado = Pasasantia
+ pasanteSeleccionado = Pasantia
         (codigo, nombreEmpresa, descripcion, fechainicio, fechafinalizacion );
  campoCodigo.setText(pasanteSeleccionado.getCodigoP());
  campoNombreEmpresa.setText(pasanteSeleccionado.getNombreP());
@@ -419,5 +428,8 @@ public class gestionPasantias extends javax.swing.JFrame {
     private Pasantia pasanteSeleccionado;
     private int filaSeleccionada= -1;
 
+
+    private Pasantia Pasantia(String codigo, String nombreEmpresa, String descripcion, String fechainicio, String fechafinalizacion) {
+       
    
     
